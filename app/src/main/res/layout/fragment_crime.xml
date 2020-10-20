@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="16dp"
+    android:layout_marginTop="92dp"
     android:orientation="vertical">
 
     <TextView
@@ -26,9 +26,9 @@
 
     <Button
         android:id="@+id/requiredcrime_date"
-        tools:text="Wed Nov 14 11:56 EST 2018"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        tools:text="Wed Nov 14 11:56 EST 2018" />
 
     <CheckBox
         android:id="@+id/crime_solved"

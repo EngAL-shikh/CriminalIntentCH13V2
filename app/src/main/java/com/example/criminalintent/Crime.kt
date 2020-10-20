@@ -1,10 +1,49 @@
 package com.example.criminalintent
 
 
-import java.util.*
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-data class Crime(val id:UUID=UUID.randomUUID(),
-                 var title:String="",
-                 val date:Date=Date(),
-                 var isSolved:Boolean=false,
-                 var Rpolice:Boolean=false)
+import java.util.*
+@Entity
+data class Crime(@PrimaryKey val id: UUID = UUID.randomUUID(),
+                 var title: String = "",
+                 var date: Date = Date(),
+                 var isSolved: Boolean = false)
+
+{
+
+
+    override fun equals(other: Any?): Boolean {
+       if (javaClass!= other?.javaClass){
+
+           return false
+       }
+        other as Crime
+
+        if (id != other.id){
+         return false
+
+        }
+        if (title != other.title){
+         return false
+
+        }
+        if (date != other.date){
+            return false
+
+        }
+        if (isSolved != other.isSolved){
+            return false
+
+        }
+
+        return true
+    }
+
+    override fun toString(): String {
+        return "Crime(id=$id,title=$title,date=$date,isSolved=$isSolved)"
+    }
+}
+
+

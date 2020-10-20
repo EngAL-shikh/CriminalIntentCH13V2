@@ -33,6 +33,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
+
                 android:orientation="vertical">
 
                 <TextView
@@ -85,7 +86,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:background="@drawable/clapsh3" />
+                    android:background="@drawable/clapsh2" />
             </LinearLayout>
 
         </LinearLayout>
