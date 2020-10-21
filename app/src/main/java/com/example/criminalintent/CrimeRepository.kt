@@ -28,10 +28,8 @@ class CrimeRepository private constructor(context: Context) {
             crimeDao.updateCrime(crime)
         }
     }
-    fun addCrime(crime: Crime) {
-        executor.execute {
-            crimeDao.addCrime(crime)
-        }}
+
+
 
 
     companion object {
@@ -47,5 +45,8 @@ class CrimeRepository private constructor(context: Context) {
         }
     }
 
-
+    fun addCrime(crime: Crime) {
+        executor.execute {
+            crimeDao.addCrime(crime)
+        }}
 }

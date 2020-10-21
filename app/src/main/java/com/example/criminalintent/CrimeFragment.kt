@@ -65,16 +65,14 @@ class CrimeFragment : Fragment(),DatePickerFragment.Callbacks,TimePickerFragment
             show(this@CrimeFragment.requireFragmentManager(), DIALOG_DATE)
             }
         }
-
+          var time=""
         // طريقة الكتاب
 //       timeButton.setOnClickListener {
-//
-//          return DatePickerFragment().apply {
-//
-//
-//            show(this@CrimeFragment.requireFragmentManager(), DIALOG_TIME)
-//            }
-//        }
+//           TimePickerFragment.newInstance(Crime.Time).apply {
+//               setTargetFragment(this@CrimeFragment, REQUEST_TIME)
+//               show(this@CrimeFragment.requireFragmentManager(), DIALOG_TIME)
+//           }
+//       }
 
         // طريقتي
         timeButton.setOnClickListener {
