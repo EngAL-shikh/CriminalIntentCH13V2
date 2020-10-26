@@ -200,6 +200,7 @@ class CrimeListFragment : Fragment() {
         }
 
 
+        //
 
         override fun getItemCount(): Int {
             if(crimes.size<=0){
