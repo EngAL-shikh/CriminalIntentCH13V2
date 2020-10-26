@@ -100,14 +100,9 @@ class CrimeListFragment : Fragment() {
 
     private fun updateUI(crimes: List<Crime>) {
 
-        if(crimes.size<=0) {
-            empty_view.visibility=View.VISIBLE
-            crime_recycler_view.visibility=View.GONE
-            addnewcrime.visibility=View.VISIBLE
 
-        }else{
             adapter = CrimeAdapter(crimes)
-            crimeRecyclerView.adapter = adapter}
+            crimeRecyclerView.adapter = adapter
 
     }
 
@@ -177,6 +172,8 @@ class CrimeListFragment : Fragment() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             var view: View?
             var recyclerViewholder: RecyclerView.ViewHolder
+
+
             when (viewType) {
                 SolvedCrime -> {
 
@@ -205,7 +202,15 @@ class CrimeListFragment : Fragment() {
 
 
         override fun getItemCount(): Int {
+            if(crimes.size<=0){
+                empty_view.visibility=View.VISIBLE
+                addnewcrime.visibility=View.VISIBLE
+            }else{
+                empty_view.visibility=View.GONE
+                addnewcrime.visibility=View.GONE
+            }
             return crimes.size
+
         }
 
 
