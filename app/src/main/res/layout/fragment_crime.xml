@@ -9,21 +9,65 @@ android:layout_margin="10dp"
     android:orientation="vertical"
     >
 
-    <TextView
-        style="?android:listSeparatorTextViewStyle"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="100dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
-        android:text="caraim lable" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-    <EditText
+        <ImageView
+            android:id="@+id/crime_photo"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"></ImageView>
 
-        android:id="@+id/requiredcrime_title"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="title of crime"
-        android:gravity="center"
-        android:background="@drawable/shape3"/>
+        <Button
+            android:id="@+id/crime_camera"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+        </Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            android:text="caraim lable" />
+
+        <EditText
+
+            android:id="@+id/requiredcrime_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/shape3"
+            android:gravity="center"
+            android:hint="title of crime" />
+    </LinearLayout>
+
+</LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
 
     <TextView
         style="?android:listSeparatorTextViewStyle"
