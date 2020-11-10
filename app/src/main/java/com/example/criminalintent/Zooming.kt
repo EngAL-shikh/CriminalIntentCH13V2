@@ -12,39 +12,40 @@ private val FILE_ARG = "photo File"
 
 class Zooming:DialogFragment() {
 
-    private lateinit var crimeRecyclerView: RecyclerView
-    private val crimeListViewModel: CrimeListViewModel by lazy {
-        ViewModelProviders.of(this).get(CrimeListViewModel::class.java)
-    }
+
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
 
-        val view = activity?.layoutInflater?.inflate(R.layout.zoom , null)
+        val view = activity?.layoutInflater?.inflate(R.layout.zoom, null)
         var imgeView = view?.findViewById(R.id.zoomingiv) as ImageView
         val imgeFile = arguments?.getSerializable(FILE_ARG) as File
 
-//trying to fixed this
 
-//        if (imgeFile.exists()) {
-//            var pictureUtils = PictureUtils()
-//            val bitmap = pictureUtils.getScaledBitmap(imgeFile.path , requireActivity()
-//            )
-//            imgeView.setImageBitmap(bitmap)
-//        } else
+
+        if (imgeFile.exists()) {
+            var pictureUtils = PictureUtils()
+            val bitmap = pictureUtils.getScaledBitmap(
+                imgeFile.path, requireActivity()
+            )
+            imgeView.setImageBitmap(bitmap)
+        } else{
 
             imgeView.setImageResource(R.drawable.nodata)
-
+              }
 
 
         return AlertDialog.Builder(requireContext() , R.style.ThemeOverlay_AppCompat_Dialog_Alert)
             .setView(view)
             .setTitle("zooming")
-            .setNegativeButton("back") { dialog , _ ->
+            .setNegativeButton("ok") { dialog , _ ->
                 dialog.cancel()
 
             }.create()
     }
+
+
+
 
     companion object {
         fun newInstance(photoFileName: File): Zooming {
