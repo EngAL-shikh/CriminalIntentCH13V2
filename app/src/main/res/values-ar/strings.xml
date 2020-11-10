@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello_blank_fragment" translatable="false">"مرحبا "</string>
+    <string name="new_crime">جريمة جديدة</string>
+    <string name="crime_suspect_text">اختار مشتبه</string>
+    <string name="crime_report_text">مشاركة البلاغ</string>
+    <string name="crime_report">%1$s!
+The crime was discovered on %2$s. %3$s, and %4$s
+</string>
+    <string name="crime_report_solved">هذه الجريمة حلت</string>
+    <string name="crime_report_unsolved">هذه الجريمة لم تحل </string>
+    <string name="crime_report_no_suspect">لايوجد مشتبه .</string>
+    <string name="crime_report_suspect">المشتبة هو  %s.</string>
+    <string name="crime_report_subject">CriminalIntent Crime Report</string>
+    <string name="send_report">Send crime report via</string>
+</resources>

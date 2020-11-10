@@ -19,6 +19,8 @@ data class Crime(@PrimaryKey val id: UUID = UUID.randomUUID(),
 
 {
 
+    val photoFileName
+        get() = "IMG_$id.jpg"
 
     override fun equals(other: Any?): Boolean {
        if (javaClass!= other?.javaClass){

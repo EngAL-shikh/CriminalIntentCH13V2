@@ -2,13 +2,10 @@ package com.example.criminalintent
 
 
 import android.content.Context
-import android.graphics.PostProcessor
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -16,14 +13,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_crime_list.*
+import java.io.File
 import java.text.DateFormat
-import java.text.ParsePosition
 import java.util.*
 
 private const val TAG = "CrimeListFragment"
 
 class CrimeListFragment : Fragment() {
-
+    private lateinit var photoFile: File
 
 
     interface Callbacks {
@@ -39,10 +36,6 @@ class CrimeListFragment : Fragment() {
         super.onAttach(context)
         callbacks = context as Callbacks?
     }
-
-
-
-
 
     var adapter: CrimeAdapter? = CrimeAdapter(emptyList())
 
@@ -74,10 +67,7 @@ class CrimeListFragment : Fragment() {
             viewLifecycleOwner,
             Observer { crimes ->
                 crimes?.let {
-                    Log.i(
-                        TAG,
-                        "Got crimes ${crimes.size}"
-                    )
+
                     updateUI (crimes)
                 }
             }
@@ -117,6 +107,8 @@ class CrimeListFragment : Fragment() {
         private val solvedImageView: ImageView = itemView.findViewById(R.id.crime_solved)
         private val titleTextView: TextView = itemView.findViewById(R.id.requiredcrime_title)
         private val dateTextView: TextView = itemView.findViewById(R.id.requiredcrime_date)
+        private var crimeImageView: ImageView = itemView.findViewById(R.id.crime_imageView)
+
 
         init {
             itemView.setOnClickListener(this)
@@ -132,12 +124,16 @@ class CrimeListFragment : Fragment() {
             this.crime = item
 
             titleTextView.text = this.crime.title
+
             dateTextView.text = DateFormat.getDateInstance(DateFormat.FULL).format(this.crime.date).toString()
             solvedImageView.visibility=if(item.isSolved){
                 View.VISIBLE
+
             }
             else
                 View.GONE
+            showImage(crimeImageView , crime)
+
         }
     }
     private  inner class SolvedCrimeHolder(view: View) : CrimeHolder(view){
@@ -290,6 +286,20 @@ class CrimeListFragment : Fragment() {
             }
             else -> return super.onOptionsItemSelected(item)
         }
+    }
+
+    fun showImage(crimeImageView: ImageView, crime: Crime) {
+        photoFile = crimeListViewModel.getPhotoFile(crime)
+        if (photoFile.exists()) {
+            var pictureUtils = PictureUtils()
+            val bitmap = pictureUtils.getScaledBitmap(
+                photoFile.path ,
+                requireActivity()
+            )
+            crimeImageView.setImageBitmap(bitmap)
+        } else
+            crimeImageView.setImageDrawable(null)
+
     }
 
 
