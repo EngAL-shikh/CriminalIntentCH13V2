@@ -24,6 +24,7 @@ class Zooming:DialogFragment() {
         var imgeView = view?.findViewById(R.id.zoomingiv) as ImageView
         val imgeFile = arguments?.getSerializable(FILE_ARG) as File
 
+//trying to fixed this
 
 //        if (imgeFile.exists()) {
 //            var pictureUtils = PictureUtils()
